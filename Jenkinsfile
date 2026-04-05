@@ -6,13 +6,11 @@ pipeline {
                      name: 'GIT_PARAMETER_PLUGIN_BRANCH',
                      type: 'GitParameterDefinition',
                      useRepository: 'git@github.com:jenkinsci/git-parameter-plugin.git'
-                     // useRepository: 'https://github.com/jenkinsci/git-parameter-plugin.git'
         gitParameter defaultValue: 'master',
                      description: 'Branch of git client plugin',
                      name: 'GIT_CLIENT_PLUGIN_BRANCH',
                      type: 'GitParameterDefinition',
                      useRepository: 'git@github.com:jenkinsci/git-client-plugin.git'
-                     // useRepository: 'https://github.com/jenkinsci/git-client-plugin.git'
     }
     stages {
         stage('checkout-2-repos') {
