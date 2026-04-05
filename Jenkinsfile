@@ -5,14 +5,14 @@ pipeline {
                      description: 'Branch of git parameter plugin',
                      name: 'GIT_PARAMETER_PLUGIN_BRANCH',
                      type: 'GitParameterDefinition',
-                     // useRepository: 'https://github.com/jenkinsci/git-parameter-plugin.git'
                      useRepository: 'git@github.com:jenkinsci/git-parameter-plugin.git'
+                     // useRepository: 'https://github.com/jenkinsci/git-parameter-plugin.git'
         gitParameter defaultValue: 'master',
                      description: 'Branch of git client plugin',
                      name: 'GIT_CLIENT_PLUGIN_BRANCH',
                      type: 'GitParameterDefinition',
-                     // useRepository: 'https://github.com/jenkinsci/git-client-plugin.git'
                      useRepository: 'git@github.com:jenkinsci/git-client-plugin.git'
+                     // useRepository: 'https://github.com/jenkinsci/git-client-plugin.git'
     }
     stages {
         stage('checkout-2-repos') {
@@ -23,7 +23,7 @@ pipeline {
                                                  localBranch()],
                                     userRemoteConfigs: [[credentialsId: 'github-ed25519',
                                                          url: 'git@github.com:jenkinsci/git-parameter-plugin.git']])
-                    sh 'git branch; git log -n 1'
+                    sh 'git branch; git log -n 1; head README*'
                 }
                 dir('git-client-plugin') {
                     checkout scmGit(branches: [[name: params.GIT_CLIENT_PLUGIN_BRANCH]],
@@ -31,7 +31,7 @@ pipeline {
                                                  localBranch()],
                                     userRemoteConfigs: [[credentialsId: 'github-ed25519',
                                                          url: 'git@github.com:jenkinsci/git-client-plugin.git']])
-                    sh 'git branch; git log -n 1'
+                    sh 'git branch; git log -n 1; head README*'
                 }
             }
         }
