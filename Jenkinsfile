@@ -19,7 +19,7 @@ pipeline {
                                                  localBranch()], 
                                     userRemoteConfigs: [[url: 'https://github.com/jenkinsci/git-client-plugin.git']])
                 }
-                sh '(cd git-plugin && git branch); (cd git-client-plugin && git branch)'
+                sh '(cd git-plugin && git branch && git log -n 1); (cd git-client-plugin && git branch && git log -n 1)'
             }
         }
     }
