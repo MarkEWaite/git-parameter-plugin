@@ -22,7 +22,7 @@ pipeline {
                                     extensions: [cloneOption(depth: 1, honorRefspec: true, noTags: true, shallow: true),
                                                  localBranch()],
                                     userRemoteConfigs: [[credentialsId: 'github-ed25519',
-                                                         url: 'git@github.com:jenkinsci/git-parameter-plugin.git`']])
+                                                         url: 'git@github.com:jenkinsci/git-parameter-plugin.git']])
                     sh 'git branch; git log -n 1'
                 }
                 dir('git-client-plugin') {
@@ -30,7 +30,7 @@ pipeline {
                                     extensions: [cloneOption(depth: 1, honorRefspec: true, noTags: true, shallow: true),
                                                  localBranch()],
                                     userRemoteConfigs: [[credentialsId: 'github-ed25519',
-                                                         url: 'git@github.com:jenkinsci/git-client-plugin.git`']])
+                                                         url: 'git@github.com:jenkinsci/git-client-plugin.git']])
                     sh 'git branch; git log -n 1'
                 }
             }
