@@ -16,11 +16,11 @@ pipeline {
         stage('checkout-2-repos') {
             steps {
                 dir('git-parameter-plugin') {
-                    sh 'git branch; git log -n 1'
                     checkout scmGit(branches: [[name: params.GIT_PARAMETER_PLUGIN_BRANCH]],
                                     extensions: [cloneOption(depth: 1, honorRefspec: true, noTags: true, shallow: true),
                                                  localBranch()],
                                     userRemoteConfigs: [[url: 'https://github.com/jenkinsci/git-parameter-plugin.git']])
+                    sh 'git branch; git log -n 1'
                 }
                 dir('git-client-plugin') {
                     checkout scmGit(branches: [[name: params.GIT_CLIENT_PLUGIN_BRANCH]],
