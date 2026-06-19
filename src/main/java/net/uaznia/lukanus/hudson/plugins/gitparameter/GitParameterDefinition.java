@@ -70,6 +70,7 @@ import org.kohsuke.stapler.DataBoundSetter;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest2;
 import org.kohsuke.stapler.export.Exported;
+import org.kohsuke.stapler.verb.POST;
 
 public class GitParameterDefinition extends ParameterDefinition implements Comparable<GitParameterDefinition> {
     private static final long serialVersionUID = 9157832967140868122L;
@@ -725,7 +726,13 @@ public class GitParameterDefinition extends ParameterDefinition implements Compa
             return Messages.GitParameterDefinition_DisplayName();
         }
 
+        @POST
         public ItemsErrorModel doFillValueItems(@AncestorInPath Job job, @QueryParameter String param) {
+            if (job == null) {
+                return ItemsErrorModel.EMPTY;
+            }
+            job.checkPermission(Job.BUILD);
+
             JobWrapper jobWrapper = JobWrapperFactory.createJobWrapper(job);
 
             ParametersDefinitionProperty prop = jobWrapper.getProperty(ParametersDefinitionProperty.class);
