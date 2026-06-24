@@ -11,7 +11,7 @@
 
   <groupId>org.jenkins-ci.tools</groupId>
   <artifactId>git-parameter</artifactId>
-  <version>462.${changelist}</version>
+  <version>${changelist}</version>
   <packaging>hpi</packaging>
   <name>Git Parameter Plug-In</name>
   <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
