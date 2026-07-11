@@ -737,7 +737,9 @@ public class GitParameterDefinition extends ParameterDefinition implements Compa
                 // Write the exception to the logger, not to the Jenkins log.
                 //
                 // https://github.com/jenkinsci/git-parameter-plugin/issues/339
-                LOGGER.log(Level.FINE, job.getDisplayName() + " " + e.getMessage(), e);
+                if (LOGGER.isLoggable(Level.FINE)) {
+                    LOGGER.log(Level.FINE, job.getDisplayName() + " " + e.getMessage(), e);
+                }
                 return ItemsErrorModel.EMPTY;
             }
 
